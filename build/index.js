@@ -1,11 +1,14 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __importDefault(require("fs"));
-const matches = fs_1.default
-    .readFileSync('football.csv', { encoding: 'utf-8' })
-    .split('\n')
-    .map((item) => [item]);
-console.log(matches);
+const WinsAnalysis_1 = require("./Analyzers/WinsAnalysis");
+const MatchReader_1 = require("./MatchReader");
+const HtmlReport_1 = require("./Reports/HtmlReport");
+const Summary_1 = require("./Summary");
+//const csvFileReader = new CsvFileReader('football.csv');
+//const matchReader = new MatchReader(csvFileReader);
+const matchReader = MatchReader_1.MatchReader.fromCsv('football.csv');
+matchReader.load();
+const summary = new Summary_1.Summary(new WinsAnalysis_1.WinsAnalysis('Man United'), new HtmlReport_1.HtmlReport());
+summary.buildAndPrintReport(matchReader.matches);
+const newSummary = Summary_1.Summary.winsAnalysisAndReport('Man United');
+newSummary.buildAndPrintReport(matchReader.matches);
