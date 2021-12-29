@@ -13,7 +13,7 @@ import { Summary } from './Summary';
 const matchReader = MatchReader.fromCsv('football.csv');
 matchReader.load();
 
-const summary = new Summary(new WinsAnalysis('Man United'), new HtmlReport());
+const summary = new Summary(new WinsAnalysis('Man United'), new HtmlReport('win-analyst-report'));
 summary.buildAndPrintReport(matchReader.matches);
 
 const newSummary = Summary.winsAnalysisAndReport('Man United');
@@ -24,3 +24,6 @@ aSummary.buildAndPrintReport(matchReader.matches);
 
 const theSummary = new Summary(new TeamMostScoredGoalsAnalyst(3), new ConsoleReport());
 theSummary.buildAndPrintReport(matchReader.matches);
+
+const anotherSummary = Summary.mostScoredGoalsAnalystAndReport();
+anotherSummary.buildAndPrintReport(matchReader.matches);

@@ -11,7 +11,7 @@ const Summary_1 = require("./Summary");
 //const matchReader = new MatchReader(csvFileReader);
 const matchReader = MatchReader_1.MatchReader.fromCsv('football.csv');
 matchReader.load();
-const summary = new Summary_1.Summary(new WinsAnalysis_1.WinsAnalysis('Man United'), new HtmlReport_1.HtmlReport());
+const summary = new Summary_1.Summary(new WinsAnalysis_1.WinsAnalysis('Man United'), new HtmlReport_1.HtmlReport('win-analyst-report'));
 summary.buildAndPrintReport(matchReader.matches);
 const newSummary = Summary_1.Summary.winsAnalysisAndReport('Man United');
 newSummary.buildAndPrintReport(matchReader.matches);
@@ -19,3 +19,5 @@ const aSummary = new Summary_1.Summary(new MostMatchWinsAnalysis_1.MostMatchWins
 aSummary.buildAndPrintReport(matchReader.matches);
 const theSummary = new Summary_1.Summary(new TeamMostScoredGoalsAnalyst_1.TeamMostScoredGoalsAnalyst(3), new ConsoleReport_1.ConsoleReport());
 theSummary.buildAndPrintReport(matchReader.matches);
+const anotherSummary = Summary_1.Summary.mostScoredGoalsAnalystAndReport();
+anotherSummary.buildAndPrintReport(matchReader.matches);
