@@ -1,4 +1,5 @@
 import { MostMatchWinsAnalysis } from './Analyzers/MostMatchWinsAnalysis';
+import { TeamMostScoredGoalsAnalyst } from './Analyzers/TeamMostScoredGoalsAnalyst';
 import { WinsAnalysis } from './Analyzers/WinsAnalysis';
 import { CsvFileReader } from './CsvFileReader';
 import { MatchReader } from './MatchReader';
@@ -20,3 +21,6 @@ newSummary.buildAndPrintReport(matchReader.matches);
 
 const aSummary = new Summary(new MostMatchWinsAnalysis(), new ConsoleReport());
 aSummary.buildAndPrintReport(matchReader.matches);
+
+const theSummary = new Summary(new TeamMostScoredGoalsAnalyst(3), new ConsoleReport());
+theSummary.buildAndPrintReport(matchReader.matches);

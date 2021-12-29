@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const MostMatchWinsAnalysis_1 = require("./Analyzers/MostMatchWinsAnalysis");
+const TeamMostScoredGoalsAnalyst_1 = require("./Analyzers/TeamMostScoredGoalsAnalyst");
 const WinsAnalysis_1 = require("./Analyzers/WinsAnalysis");
 const MatchReader_1 = require("./MatchReader");
 const ConsoleReport_1 = require("./Reports/ConsoleReport");
@@ -16,3 +17,5 @@ const newSummary = Summary_1.Summary.winsAnalysisAndReport('Man United');
 newSummary.buildAndPrintReport(matchReader.matches);
 const aSummary = new Summary_1.Summary(new MostMatchWinsAnalysis_1.MostMatchWinsAnalysis(), new ConsoleReport_1.ConsoleReport());
 aSummary.buildAndPrintReport(matchReader.matches);
+const theSummary = new Summary_1.Summary(new TeamMostScoredGoalsAnalyst_1.TeamMostScoredGoalsAnalyst(3), new ConsoleReport_1.ConsoleReport());
+theSummary.buildAndPrintReport(matchReader.matches);

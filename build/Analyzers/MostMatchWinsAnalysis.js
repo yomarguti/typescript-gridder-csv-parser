@@ -10,10 +10,10 @@ class MostMatchWinsAnalysis {
             const homeTeam = current[1];
             const awayTeam = current[2];
             if (current[5] === MatchResult_1.MatchResult.HomeWin) {
-                acc[awayTeam] = (acc[awayTeam] || 0) + 1;
+                acc[homeTeam] = (acc[homeTeam] || 0) + 1;
             }
             else {
-                acc[homeTeam] = (acc[homeTeam] || 0) + 1;
+                acc[awayTeam] = (acc[awayTeam] || 0) + 1;
             }
             return acc;
         }, {});
