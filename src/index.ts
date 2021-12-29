@@ -1,3 +1,4 @@
+import { MostMatchWinsAnalysis } from './Analyzers/MostMatchWinsAnalysis';
 import { WinsAnalysis } from './Analyzers/WinsAnalysis';
 import { CsvFileReader } from './CsvFileReader';
 import { MatchReader } from './MatchReader';
@@ -16,3 +17,6 @@ summary.buildAndPrintReport(matchReader.matches);
 
 const newSummary = Summary.winsAnalysisAndReport('Man United');
 newSummary.buildAndPrintReport(matchReader.matches);
+
+const aSummary = new Summary(new MostMatchWinsAnalysis(), new ConsoleReport());
+aSummary.buildAndPrintReport(matchReader.matches);
