@@ -12,10 +12,12 @@ export class TeamMostScoredGoalsAnalyst implements Analyzer {
     let goalsPerTeam: Accumulator = {};
 
     matches.forEach((match: MatchData) => {
-      const homeTeam = match[1];
-      const awayTeam = match[2];
-      goalsPerTeam[homeTeam] = (goalsPerTeam[homeTeam] || 0) + match[3];
-      goalsPerTeam[awayTeam] = (goalsPerTeam[awayTeam] || 0) + match[4];
+      if (match.length) {
+        const homeTeam = match[1];
+        const awayTeam = match[2];
+        goalsPerTeam[homeTeam] = (goalsPerTeam[homeTeam] || 0) + match[3];
+        goalsPerTeam[awayTeam] = (goalsPerTeam[awayTeam] || 0) + match[4];
+      }
     });
 
     const goalsScore = Object.keys(goalsPerTeam)
